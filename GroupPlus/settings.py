@@ -22,9 +22,12 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '9)v&g2uaenrq9jl*!ovznwpyj@ti&mn+l^k8&lx4z79@6t)chi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'aliyun.taraxacum.ink'
+]
 
 # Application definition
 
