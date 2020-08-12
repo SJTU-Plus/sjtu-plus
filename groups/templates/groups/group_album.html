@@ -1,0 +1,23 @@
+<div class="row">
+
+    {% for group in groups %}
+
+        <div class="col-md-4" id="{{ group.id }}">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ group.name }}</h5>
+
+                    <p class="card-text">{{ group.number }}</p>
+                    {# <div class="d-flex justify-content-between align-items-center"> #}
+                    {# <div class="btn-group"> #}
+                    {# <button type="button" class="btn btn-sm btn-outline-secondary">Copy</button> #}
+                    {# </div> #}
+                    {# <small class="text-muted">{{ comment }}</small> #}
+                    {# </div> #}
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+</div>
