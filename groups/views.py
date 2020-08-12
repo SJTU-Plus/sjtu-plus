@@ -29,6 +29,4 @@ def json(request, root: int):
             ]
         }
 
-    print(resolve_category(root))
-
     return JsonResponse(resolve_category(root))
