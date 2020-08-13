@@ -22,7 +22,9 @@ def json(request, root: int):
             "groups": [{
                 "group_id": g.id,
                 "group_name": g.name,
-                "group_number": str(g.number)
+                "group_number": str(g.number) if g.number else None,
+                "bot_enabled": g.bot_enabled,
+                "vacancy": g.vacancy,
             } for g in Group.objects.filter(category=category)],
             "subcategories": [
                 resolve_category(c) for c in Category.objects.filter(parent=category)

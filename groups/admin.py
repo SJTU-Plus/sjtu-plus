@@ -16,5 +16,5 @@ class GroupAdmin(admin.ModelAdmin):
     date_hierarchy = 'last_modified'
     readonly_fields = ('last_modified',)
     fields = ('name', 'number', 'category', 'last_modified')
-    list_display = ('name', 'number', 'category', 'last_modified')
+    list_display = ('name', 'number', 'category', 'last_modified', 'bot_enabled', 'vacancy')
     list_filter = ('category',)
