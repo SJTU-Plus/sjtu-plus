@@ -19,6 +19,8 @@ class Group(models.Model):
     number = models.BigIntegerField(null=True, blank=True, unique=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     last_modified = models.DateTimeField(auto_now=True)
+    bot_enabled = models.BooleanField(default=False)
+    vacancy = models.BooleanField(default=True)
     flag = models.IntegerField(default=0, null=False)
 
     def __str__(self):
