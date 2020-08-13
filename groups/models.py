@@ -19,6 +19,7 @@ class Group(models.Model):
     number = models.BigIntegerField(null=True, blank=True, unique=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     last_modified = models.DateTimeField(auto_now=True)
+    flag = models.IntegerField(default=0, null=False)
 
     def __str__(self):
         return f"{self.category.name} / ({self.name}, {self.number})"

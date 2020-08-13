@@ -9,8 +9,6 @@ class CategoryAdmin(admin.ModelAdmin):
     readonly_fields = ('last_modified',)
     fields = ('name', 'parent', 'last_modified')
     list_display = ('name', 'parent', 'last_modified')
-    # def view_last_modified(self, obj: Category):
-    #     return obj.last_modified.isoformat()
 
 
 @admin.register(Group)
