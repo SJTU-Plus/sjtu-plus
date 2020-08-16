@@ -7,8 +7,8 @@ from .models import Category, Group
 class CategoryAdmin(admin.ModelAdmin):
     date_hierarchy = 'last_modified'
     readonly_fields = ('last_modified',)
-    fields = ('id', 'name', 'parent', 'last_modified')
-    list_display = ('id', 'name', 'parent', 'last_modified')
+    fields = ('name', 'parent', 'last_modified')
+    list_display = ('name', 'parent', 'last_modified')
 
 
 @admin.register(Group)
