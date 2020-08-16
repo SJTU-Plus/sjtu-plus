@@ -25,6 +25,7 @@ SECRET_KEY = '9)v&g2uaenrq9jl*!ovznwpyj@ti&mn+l^k8&lx4z79@6t)chi'
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'localhost',
     'aliyun.taraxacum.ink'
 ]
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,5 +119,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = Path(BASE_DIR) / 'static-files'
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
