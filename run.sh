@@ -8,4 +8,4 @@ rm -rf /data/static-files/*
 python manage.py collectstatic
 python manage.py makemigrations
 python manage.py migrate
-gunicorn -c gunicorn.conf.py GroupPlus.wsgi:application
+gunicorn -c gunicorn.conf.py GroupPlus.wsgi:application -
