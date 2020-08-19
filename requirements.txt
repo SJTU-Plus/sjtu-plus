@@ -1,3 +1,5 @@
 gunicorn
 Django
 requests
+django-apscheduler
+apscheduler
