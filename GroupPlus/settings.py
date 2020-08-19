@@ -122,4 +122,5 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = '/data/static-files' + STATIC_URL
 
+GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 GITHUB_PERSONAL_ACCESS_TOKEN = os.environ.get('GITHUB_PERSONAL_ACCESS_TOKEN', '')
