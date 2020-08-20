@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_apscheduler'
 ]
 
 MIDDLEWARE = [
@@ -122,4 +123,14 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = '/data/static-files' + STATIC_URL
 
+GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
+
 GITHUB_PERSONAL_ACCESS_TOKEN = os.environ.get('GITHUB_PERSONAL_ACCESS_TOKEN', '')
+
+GITHUB_TRIGGER_URL = 'https://api.github.com/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches'.format(
+    owner='sjtu-plus',
+    repo='sjtu-plus.github.io',
+    workflow_id='2177133'
+)
+
+DEPLOYMENT_INTERVAL = 60
