@@ -2,6 +2,7 @@ from authlib.integrations.django_client import OAuth
 from authlib.jose import jwt
 from authlib.oidc.core import CodeIDToken
 from django.http import JsonResponse
+from django.shortcuts import redirect, reverse
 
 from GroupPlus.settings import JACCOUNT_CLIENT_ID, JACCOUNT_CLIENT_SECRET
 
@@ -37,4 +38,4 @@ def authorize(request):
     request.session['user'] = claims
     request.session.set_expiry(claims['exp'] - claims['iat'])
     # resp = oauth.jaccount.get('user', token=token)
-    return JsonResponse({"success": True})
+    return redirect(reverse('verify'))
