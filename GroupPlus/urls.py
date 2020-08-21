@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
 urlpatterns = [
-    path('groups/', include('groups.urls')),
     path('admin/', admin.site.urls),
+    path('groups/', include('groups.urls')),
+    path('attest/', include('verify.urls')),
+    path('login', views.login, name='login'),
+    path('authorize', views.authorize, name='authorize')
 ]
