@@ -1,5 +1,8 @@
-gunicorn
 Django
-requests
-django-apscheduler
 apscheduler
+authlib
+base58
+django-apscheduler
+gunicorn
+pycryptodome
+requests
