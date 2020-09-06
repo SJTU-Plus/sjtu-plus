@@ -6,3 +6,4 @@ django-apscheduler
 gunicorn
 pycryptodome
 requests
+psycopg2-binary
