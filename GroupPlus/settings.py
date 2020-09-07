@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'GroupPlus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/data/db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sjtu-plus',
+        'USER': 'sjtu-plus',
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+        'HOST': 'postgres-db',
+        'PORT': '5432',
     }
 }
 
@@ -122,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/data/static-files' + STATIC_URL
+STATIC_ROOT = '/data/'
 
 GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 
