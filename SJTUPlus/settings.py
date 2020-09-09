@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import sys
 from os import urandom
 from pathlib import Path
 
@@ -43,8 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_apscheduler'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -90,6 +90,12 @@ WSGI_APPLICATION = 'SJTUPlus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
+DB_SQLITE = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -98,9 +104,12 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
         'HOST': 'postgres-db',
         'PORT': '5432',
-    }
+    },
+    'test': DB_SQLITE
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] = DB_SQLITE
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

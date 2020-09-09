@@ -1,4 +1,5 @@
-{% extends "_layouts/default.html" %}
+{% extends "_layouts/default.j2" %}
+{% from '_includes/categories.j2' import category %}
 
 {% block title %}交流群{% endblock %}
 {% block content %}
@@ -8,7 +9,7 @@
         如果你希望将自己维护的 QQ 群加入本清单，请联系 @迟先生、@杜大佬、@小笼包
         或者 @人参果
       </p>
-      <div class="accordion">{{ content }}</div>
+      <div class="accordion">{{ category(root) }}</div>
     </div>
   </div>
 {% endblock %}
