@@ -35,8 +35,9 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'groups.apps.GroupsConfig',
-    'verify.apps.VerifyConfig',
+    'groups',
+    'verify',
+    'main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
