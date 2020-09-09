@@ -1,7 +1,6 @@
-from django.http import JsonResponse
 from django.shortcuts import render
 
-from .models import Category, Group
+from .models import Category
 
 
 def index(request, root: int):

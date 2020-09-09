@@ -65,7 +65,7 @@ def verify(request):
                 "success": True,
                 "message": timestamp.isoformat()
             })
-    except (UnicodeEncodeError, ValueError) as e:
+    except (UnicodeEncodeError, ValueError):
         return JsonResponse({
             "success": False,
             "message": "Invalid token"
