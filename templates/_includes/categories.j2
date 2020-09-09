@@ -1,7 +1,7 @@
-{% macro group(group) %}
+{% macro gen_group(group) %}
 <div class="card h-100 mb-4 shadow-sm">
     <div class="card-body">
-      <h5 class="card-title">{{group.name }}</h5>
+      <h5 class="card-title">{{ group.name }}</h5>
       <p class="card-text">
         {% if group.number %} {{ group.number }} {%
         else %} 暂无群号 {% endif %}
@@ -29,14 +29,14 @@
       </div>
     </div>
   </div>
-  {% endmacro %}
+{% endmacro %}
 
 {% macro category_first_level(category) %}
 <div class="row row-cols-1 row-cols-md-3">
     {% if category.groups %}
         {% for group in category.groups %}
             {% if group.number %}
-            <div class="col mb-4">{{ group(group) }}</div>
+            <div class="col mb-4">{{ gen_group(group) }}</div>
             {% endif %}
         {% endfor %}
     {% endif %}
@@ -50,13 +50,13 @@
   {% if category.subcategories %}
     <div class="accordion">
         {% for subcategory in category.subcategories %}
-            {{ category(subcategory) }}
+            {{ gen_category(subcategory) }}
         {% endfor %}
     </div>
   {% endif %}
 {% endmacro %}
 
-{% macro category(category) %}
+{% macro gen_category(category) %}
 <div class="card">
     <div class="card-header p-3">
       <span class="text-secondary">
