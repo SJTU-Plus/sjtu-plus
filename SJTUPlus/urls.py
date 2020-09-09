@@ -23,5 +23,6 @@ urlpatterns = [
     path('groups/', include('groups.urls')),
     path('attest/', include('verify.urls')),
     path('login', views.login, name='login'),
-    path('authorize', views.authorize, name='authorize')
+    path('authorize', views.authorize, name='authorize'),
+    path('', include('main.urls'))
 ]

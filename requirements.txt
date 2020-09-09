@@ -7,3 +7,4 @@ gunicorn
 pycryptodome
 requests
 psycopg2-binary
+Jinja2

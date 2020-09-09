@@ -1,0 +1,18 @@
+{% macro link_card(name, subtitle, description, link, link_description, class) %}
+<div class="row justify-content-center my-3">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm {{ class }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ name }}</h5>
+                {% if subtitle != "" %}
+                <h6 class="card-subtitle mb-2 text-muted">学期开课表 + 虚拟排课服务</h6>
+                {% endif %}
+                <p class="card-text">{{ description }}</p>
+                <a href="{{ link }}" class="card-link">
+                    {{ link_description }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

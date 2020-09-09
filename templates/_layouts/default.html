@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>{% block title %}{% endblock %} | SJTU-Plus</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    {% include '_includes/header.html' %}
+    {% block content %}{% endblock %}
+    {% include '_includes/footer.html' %}
+    <script
+      type="text/javascript"
+      src="https://v1.cnzz.com/z_stat.php?id=1279179639&web_id=1279179639"
+    ></script>
+  </body>
+</html>
