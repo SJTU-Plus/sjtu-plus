@@ -1,0 +1,75 @@
+{% extends "_layouts/default.j2" %}
+
+
+{% block title %}加群验证服务{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">SJTU<sup>+</sup> 加群验证服务</h5>
+          <p class="card-subtitle mb-2 bg-warning text-light p-1">
+            即将前往验证页面。
+          </p>
+
+          <p class="card-text">
+            在您通过 jAccount 验证后，SJTU-Plus 加群验证服务将会为您派发验证码
+            (Token)。您可以将它填入支持自助验证 QQ 群的加群申请中。
+          </p>
+
+          <ul>
+            <li>我们的服务器不会储存您的 jAccount 信息与 QQ 号。</li>
+            <li>
+              为了方便您多次使用本服务，我们会将一些信息保存在您的浏览器中。您可以随时清除这些数据。
+            </li>
+            <li>
+              技术详情可以参阅
+              <a href="/verify_whitepaper/"
+                >SJTU-Plus 加群验证服务白皮书</a
+              >。
+            </li>
+          </ul>
+
+          <p class="card-text text-right">
+            <a class="btn btn-outline-success" href="/attest"
+              >开始验证</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center my-3">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">遇到问题？</h5>
+          <ul>
+            <li>
+              <b>验证问题</b> 请发邮件至
+              <a href="mailto:sjtu-plus@googlegroups.com"
+                >sjtu-plus@googlegroups.com</a
+              >，或联系对应 QQ 群的管理员。
+            </li>
+            <li>
+              <b>接入 SJTU-Plus 群验证服务</b> 请在任意交大 QQ 群中联系
+              @迟先生、@杜大佬、@小笼包、@人参果，或发邮件至
+              <a href="mailto:sjtu-plus@googlegroups.com"
+                >sjtu-plus@googlegroups.com</a
+              >。
+            </li>
+            <li>
+              <b>技术问题</b> 请在
+              <a href="https://github.com/sjtu-plus/sjtu-plus.github.io"
+                >sjtu-plus.github.io</a
+              >
+              repo 中提 issue。
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

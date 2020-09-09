@@ -1,0 +1,148 @@
+{% extends "_layouts/default.j2" %}
+
+{% block title %}加群验证服务{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">SJTU<sup>+</sup> 加群验证服务</h5>
+          <p class="card-subtitle mb-2 text-success">
+            您已成功通过 jAccount 验证。
+          </p>
+          <p class="card-text">
+            请在下方表单中输入您的QQ号，我们将为您生成验证码。
+          </p>
+          <form>
+            <div class="form-group">
+              <div class="input-group mb-3">
+                <input
+                  class="form-control"
+                  id="qq_number"
+                  name="qq_number"
+                  placeholder="QQ"
+                  type="text"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    disabled
+                    id="btn_submit_disabled"
+                  >
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    提交
+                  </button>
+                  <button class="btn btn-primary" type="button" id="btn_submit">
+                    提交
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <p class="card-text">
+            该验证码可在申请加群时作为验证信息填写，管理员将在验证其有效性后通过申请。验证码
+            30 天内有效。
+          </p>
+
+          <div id="qrcode"></div>
+
+          <p class="my-2">您申请的 Token</p>
+          <ul
+            class="list-group list-group-flush border-top"
+            id="token_list"
+          ></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+    function token_list_item(t) {
+        return `<li class="list-group-item p-1">
+      <div class="row align-items-center small">
+        <div class="col-xl d-flex text-monospace">${t.data}</div>
+        <div class="col-md-auto text-muted">${new Date(
+            t.time
+        ).toLocaleDateString()}</div>
+        <div class="col-md-auto">
+          <button type="button" class="btn btn-light btn-sm" onclick="return copy(this, '${
+            t.data
+        }')">复制</button>
+        </div>
+      </div>
+    </li>`;
+    }
+
+    function refresh_token_list() {
+        const tokens = JSON.parse(localStorage.getItem("tokens_new"));
+        const result = [];
+        if (tokens && tokens.length > 0) {
+            for (const token of tokens) {
+                if (token) {
+                    result.push(token_list_item(token));
+                }
+            }
+            result.reverse();
+            $("#token_list").html(result.join("\n"));
+        }
+    }
+
+    $(document).ready(function () {
+        $("#btn_submit_disabled").hide();
+        $("#qq_number").val(localStorage.getItem("qqNumber"));
+
+        $("#btn_submit").click(function () {
+            const qq_number = $("#qq_number").val();
+            localStorage.setItem("qqNumber", qq_number);
+            $("#btn_submit").hide();
+            $("#btn_submit_disabled").show();
+
+            $.ajax({
+                method: "POST",
+                url: "generate",
+                data: {qq_number},
+                headers: {"X-CSRFToken": $.cookie('csrftoken')},
+                dataType: "json",
+                success: function (data) {
+                    let tokens = JSON.parse(localStorage.getItem("tokens_new"));
+                    if (tokens && tokens.length > 0) {
+                        tokens.push({data: data.token, time: Date.now()});
+                    } else {
+                        tokens = [{data: data.token, time: Date.now()}];
+                    }
+                    localStorage.setItem("tokens_new", JSON.stringify(tokens));
+                    refresh_token_list();
+                    $("#btn_submit").show();
+                    $("#btn_submit_disabled").hide();
+                },
+                error: function (xhr, status, error) {
+                    if (xhr.status === 401) {
+                        location.href = "/login";
+                    } else {
+                        console.error(status);
+                        console.error(error);
+                        alert(xhr.responseJSON.message);
+                        console.error(xhr);
+                    }
+                    $("#btn_submit").show();
+                    $("#btn_submit_disabled").hide();
+                },
+            });
+        });
+
+        refresh_token_list();
+    });
+</script>
+
+{% endblock %}

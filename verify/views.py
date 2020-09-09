@@ -16,7 +16,7 @@ qq_pattern = re.compile(r'[1-9]\d{4,}')
 def index(request):
     if 'user' not in request.session:
         return redirect(reverse('login'))
-    return render(request, 'verify/index.html')
+    return render(request, 'verify/index.j2')
 
 
 def generate(request):
