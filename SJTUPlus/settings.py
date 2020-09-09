@@ -107,8 +107,9 @@ DATABASES = {
     'test': DB_SQLITE
 }
 
-if 'test' in sys.argv:
+if os.environ.get("CI"):
     DATABASES['default'] = DB_SQLITE
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

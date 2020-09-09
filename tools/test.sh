@@ -3,5 +3,5 @@
 set -e
 
 python manage.py makemigrations
-python manage.py migrate --database=test
+python manage.py migrate
 python manage.py test --noinput
