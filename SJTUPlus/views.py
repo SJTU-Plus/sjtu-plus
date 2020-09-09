@@ -4,7 +4,7 @@ from authlib.oidc.core import CodeIDToken
 from django.http import JsonResponse
 from django.shortcuts import redirect, reverse
 
-from GroupPlus.settings import JACCOUNT_CLIENT_ID, JACCOUNT_CLIENT_SECRET
+from SJTUPlus.settings import JACCOUNT_CLIENT_ID, JACCOUNT_CLIENT_SECRET
 
 oauth = OAuth()
 oauth.register(

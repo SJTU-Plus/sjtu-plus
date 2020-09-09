@@ -130,4 +130,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/GroupPlus/private.py
+/SJTUPlus/private.py
