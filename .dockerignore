@@ -1,3 +1,6 @@
+# Ignore generated files
+*.pyc
+
 .idea/
 /static-files/
 
@@ -132,5 +135,4 @@ dmypy.json
 .pyre/
 /SJTUPlus/private.py
 
-/.vscode/
-/data/
+.vscode/

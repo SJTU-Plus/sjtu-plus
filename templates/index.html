@@ -1,0 +1,43 @@
+{% extends "_layouts/default.html" %}
+{% from '_includes/link_card.html' import link_card %}
+
+{% block title %}首页{% endblock %}
+{% block content %}
+<div class="container">
+    {{ link_card(
+        "加群验证服务",
+        "",
+        "SJTU-Plus 团队提供 QQ 群加群验证服务。如果您需要填写 QQ 群验证消息中的“验证码”，请点击下面的链接开始验证。",
+        "/verify/",
+        "开始验证",
+        "border-primary") }}
+    {{ link_card(
+        "学科交流群",
+        "",
+        "SJTU-Plus 团队收集了由学生运营的学科交流群。团队为部分学科交流群接入了自助加群验证服务。",
+        "/subjects/",
+        "浏览",
+        "") }}
+    {{ link_card(
+        "Course+",
+        "学期开课表与虚拟排课服务",
+        "通过 Course-Plus 快速查询学期课程，并进行虚拟排课。",
+        "/course-plus/",
+        "使用",
+        "") }}
+    {{ link_card(
+        "常用网站",
+        "",
+        "SJTU-Plus 收集了一批常用的交大网站，你可以使用这个页面快速导航。",
+        "/websites/",
+        "浏览",
+        "") }}
+    {{ link_card(
+        "新生群索引",
+        "",
+        "SJTU-Plus 团队提供新生群索引服务。其中包含学院群、地区群、社团群、游戏群。",
+        "/freshmen-groups/",
+        "浏览",
+        "") }}
+</div>
+{% endblock %}
