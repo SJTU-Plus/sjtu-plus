@@ -1,4 +1,4 @@
-# GroupPlus
+# SJTUPlus
 
 
 ## How to startup
@@ -28,7 +28,7 @@
    # This will collect the static resources to /static-files
    # You need another web server to host the static resources
    $ python3 manage.py collectstatics 
-   $ gunicorn -c gunicorn.conf.py Groupplus.wsgi:application
+   $ gunicorn -c gunicorn.conf.py SJTUPlus.wsgi:application
    ```
 6. Run the db watcher
    ```
