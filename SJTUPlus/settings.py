@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-from os import urandom
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_apscheduler'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -90,6 +88,12 @@ WSGI_APPLICATION = 'SJTUPlus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
+DB_SQLITE = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -98,8 +102,12 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
         'HOST': 'postgres-db',
         'PORT': '5432',
-    }
+    },
+    'test': DB_SQLITE
 }
+
+if os.environ.get("CI"):
+    DATABASES['default'] = DB_SQLITE
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -156,3 +164,5 @@ JACCOUNT_CLIENT_ID = os.environ.get('JACCOUNT_CLIENT_ID', '')
 JACCOUNT_CLIENT_SECRET = os.environ.get('JACCOUNT_CLIENT_SECRET', '')
 
 ATTESTATION_SECRET = os.environ.get('ATTESTATION_SECRET', '')
+
+APPEND_SLASH = True

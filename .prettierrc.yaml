@@ -1,0 +1,4 @@
+overrides:
+  - files: "*.j2"
+    options:
+      parser: html
