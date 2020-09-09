@@ -5,7 +5,7 @@ from datetime import datetime
 from Crypto.Hash import BLAKE2b
 from base58 import b58decode, b58encode
 
-from GroupPlus.settings import ATTESTATION_SECRET
+from SJTUPlus.settings import ATTESTATION_SECRET
 
 __all__ = ['attestation']
 
