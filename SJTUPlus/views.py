@@ -38,4 +38,4 @@ def authorize(request):
     request.session['user'] = claims
     request.session.set_expiry(claims['exp'] - claims['iat'])
     # resp = oauth.jaccount.get('user', token=token)
-    return redirect(reverse('attest:verify'))
+    return redirect(reverse('attest:index'))
