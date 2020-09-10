@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Group
+from .models import Category, Group, Website
 
 
 @admin.register(Category)
@@ -17,4 +17,13 @@ class GroupAdmin(admin.ModelAdmin):
     readonly_fields = ('last_modified',)
     fields = ('name', 'number', 'category', 'last_modified', 'bot_enabled', 'vacancy')
     list_display = ('name', 'number', 'category', 'last_modified', 'bot_enabled', 'vacancy')
+    list_filter = ('category',)
+
+
+@admin.register(Website)
+class WebsiteAdmin(admin.ModelAdmin):
+    date_hierarchy = 'last_modified'
+    readonly_fields = ('last_modified',)
+    fields = ('name', 'category', 'desc', 'url')
+    list_display = ('name', 'category', 'desc', 'url')
     list_filter = ('category',)

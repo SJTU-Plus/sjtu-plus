@@ -1,5 +1,5 @@
 {% extends "_layouts/default.j2" %}
-{% from '_includes/categories.j2' import gen_category %}
+{% from '_includes/categories.j2' import category_first_level %}
 
 {% block title %}{{ root.name }}{% endblock %}
 {% block content %}
@@ -9,7 +9,7 @@
         如果你希望将自己维护的 QQ 群加入本清单，请联系 @迟先生、@杜大佬、@小笼包
         或者 @人参果
       </p>
-      <div class="accordion">{{ gen_category(root) }}</div>
+      <div class="accordion">{{ category_first_level(root) }}</div>
     </div>
   </div>
 {% endblock %}
