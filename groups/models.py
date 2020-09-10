@@ -32,10 +32,10 @@ class Group(models.Model):
 class Website(models.Model):
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
-    desc = models.CharField(max_length=1024)
+    desc = models.CharField(max_length=1024, null=True, blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
     last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.category.name} / ({self.name}, {self.number})"
+        return f"{self.category.name} / ({self.name}, {self.url})"

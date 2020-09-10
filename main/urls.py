@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('verify/', views.verify, name='verify'),
-    path('freshmen-groups/', lambda x: redirect('/groups/5')),
-    path('subjects/', lambda x: redirect('/groups/15'))
+    path('freshmen-groups/', lambda _: redirect('/groups/5')),
+    path('subjects/', lambda _: redirect('/groups/15')),
+    path('websites/', lambda _: redirect('/groups/18'))
 ]

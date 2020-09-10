@@ -21,7 +21,7 @@ class GroupAdmin(admin.ModelAdmin):
 
 
 @admin.register(Website)
-class GroupAdmin(admin.ModelAdmin):
+class WebsiteAdmin(admin.ModelAdmin):
     date_hierarchy = 'last_modified'
     readonly_fields = ('last_modified',)
     fields = ('name', 'category', 'desc', 'url')
