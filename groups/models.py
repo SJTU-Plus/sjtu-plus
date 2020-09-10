@@ -4,7 +4,8 @@ from django.db import models
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    parent = models.ForeignKey(
+        'self', on_delete=models.SET_NULL, null=True, blank=True)
     last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -17,11 +18,24 @@ class Category(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=255)
     number = models.BigIntegerField(null=True, blank=True, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
     last_modified = models.DateTimeField(auto_now=True)
     bot_enabled = models.BooleanField(default=False)
     vacancy = models.BooleanField(default=True)
     flag = models.IntegerField(default=0, null=False)
+
+    def __str__(self):
+        return f"{self.category.name} / ({self.name}, {self.number})"
+
+
+class Website(models.Model):
+    name = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
+    desc = models.CharField(max_length=1024)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.category.name} / ({self.name}, {self.number})"
