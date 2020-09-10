@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('categories/', include('groups.urls')),
-    path('attest/', include('verify.urls')),
+    path('attest/', include('verify.urls', namespace="attest")),
     path('login', views.login, name='login'),
     path('authorize', views.authorize, name='authorize'),
     path('', include('main.urls'))
