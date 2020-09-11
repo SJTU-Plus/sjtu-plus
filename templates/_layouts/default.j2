@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" class="h-100">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -13,10 +13,19 @@
       rel="stylesheet"
     />
   </head>
-
-  <body>
-    {% include '_includes/header.j2' %}
-    {% block content %}{% endblock %}
+  <body class="d-flex flex-column h-100">
+    <main role="main" class="flex-shrink-0">
+      <nav class="navbar navbar-light mb-5">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            SJTU+
+          </a>
+          <span class="text-muted">{% block icon_title %}{% endblock %}</span>
+        </div>
+      </nav>
+      {% include '_includes/header.j2' %}
+      {% block content %}{% endblock %}
+    </main>
     {% include '_includes/footer.j2' %}
     <script
       type="text/javascript"

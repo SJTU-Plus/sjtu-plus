@@ -1,6 +1,7 @@
 {% extends "_layouts/default.j2" %}
+{% from '_includes/svg.j2' import shield_plus %}
 
-
+{% block icon_title %} {{ shield_plus(1)}} Identity+{% endblock %}
 {% block title %}加群验证服务{% endblock %}
 {% block content %}
 <div class="container">

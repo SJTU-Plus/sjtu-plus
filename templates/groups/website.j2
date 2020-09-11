@@ -1,14 +1,12 @@
 {% extends "_layouts/default.j2" %}
 {% from '_includes/categories.j2' import category_first_level %}
+{% from '_includes/svg.j2' import link %}
 
+{% block icon_title %} {{ link(1)}} Link+{% endblock %}
 {% block title %}{{ root.name }}{% endblock %}
 {% block content %}
 <div class="py-5">
     <div class="container">
-      <p class="text-center">
-        如果你希望将自己维护的 QQ 群加入本清单，请联系 @迟先生、@杜大佬、@小笼包
-        或者 @人参果
-      </p>
       <div class="accordion">{{ category_first_level(root) }}</div>
     </div>
   </div>
