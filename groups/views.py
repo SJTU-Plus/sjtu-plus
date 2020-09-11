@@ -18,7 +18,13 @@ def build_category(category):
 
 def index(request, root: int):
     root = build_category(Category.objects.get(id=root))
+    return render(request, 'groups/group.j2', {
+        'root': root
+    })
 
-    return render(request, 'groups/index.j2', {
+
+def website(request, root: int):
+    root = build_category(Category.objects.get(id=root))
+    return render(request, 'groups/website.j2', {
         'root': root
     })
