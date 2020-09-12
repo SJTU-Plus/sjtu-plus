@@ -10,7 +10,7 @@
 {% block content %}
 <div class="py-5">
     <div class="container d-flex flex-column align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <ul class="nav nav-pills nav-justified mb-5">
           {% for (name, id) in navs %}
             <li class="nav-item">
@@ -18,6 +18,21 @@
             </li>
           {% endfor %}
         </ul>
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+              SJTU-Plus 团队对于以下 QQ 群的群成员组成、聊天内容不作保证。
+              在群聊中，请保护好个人隐私，不要轻易相信陌生人，谨防上当受骗。
+            </div>
+          </div>
+          {% if root.id == 15 %}
+            <div class="col-12">
+              <div class="alert alert-info" role="alert">
+                本页面中的学科交流群均由 SJTU 学生运营。
+              </div>
+            </div>
+          {% endif %}
+        </div>
       </div>
       <div class="accordion">{{ category_first_level(root) }}</div>
       <p class="text-center mt-3">
