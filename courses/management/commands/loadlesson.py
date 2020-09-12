@@ -67,10 +67,6 @@ def create_schedule(data: dict, lesson: Lesson, position: Position) -> dict:
 class Command(BaseCommand):
     help = 'Load lesson arrangement data downloaded from i.sjtu.edu.cn'
 
-    def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS(str(args)))
-        self.stdout.write(self.style.SUCCESS(str(options)))
-
     def add_arguments(self, parser):
         parser.add_argument('json_file', type=str)
 
