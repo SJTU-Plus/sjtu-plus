@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'groups',
     'verify',
     'main',
+    'courses',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
