@@ -24,5 +24,6 @@ urlpatterns = [
     path('attest/', include('verify.urls', namespace="attest")),
     path('login', views.login, name='login'),
     path('authorize', views.authorize, name='authorize'),
+    path('api/', include('api.urls')),
     path('', include('main.urls'))
 ]
