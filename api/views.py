@@ -9,6 +9,10 @@ def canteen(request):
     result = requests.get("https://canteen.sjtu.edu.cn/CARD/Ajax/Place")
     return JsonResponse(result.json(), safe=False)
 
+def canteen_detail(request, id):
+    result = requests.get(f"https://canteen.sjtu.edu.cn/CARD/Ajax/PlaceDetails/{id}")
+    return JsonResponse(result.json(), safe=False)
+
 
 def library(request):
     result = requests.get(
