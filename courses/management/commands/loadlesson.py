@@ -32,8 +32,8 @@ def create_lesson(data: dict, course: Course) -> dict:
         'grade': data.get('nj'),  # "nj": "2017",
         'audience': data.get('jxbzc'),  # "jxbzc": "2017机械工程(中法合作办学)",
         'comment': data.get('xkbz', ''),  # "xkbz": "仅限巴黎高科学院工科一专选课",
-        'capacity': int(data.get('xkrs')),  # "xkrs": 7,
-        'registered_count': int(data.get('jxbrs')),  # "jxbrs": 8,
+        'capacity': int(data.get('jxbrs')),  # "jxbrs": 8,
+        'registered_count': int(data.get('xkrs')),  # "xkrs": 7,
     }
 
 
