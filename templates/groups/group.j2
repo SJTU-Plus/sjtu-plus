@@ -1,8 +1,8 @@
 {% extends "_layouts/default.j2" %}
 {% from '_includes/categories.j2' import category_first_level %}
-{% from '_includes/svg.j2' import person_plus %}
+{% from '_includes/svg.j2' import chat_left_text %}
 
-{% block icon_title %} {{ person_plus(1)}} Group+{% endblock %}
+{% block icon_title %} {{ chat_left_text(1)}} Group+{% endblock %}
 {% block title %}{{ root.name }}{% endblock %}
 
 {% set navs = [("学科交流群", 15), ("新生群", 5)] %}
