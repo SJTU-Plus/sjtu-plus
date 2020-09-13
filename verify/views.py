@@ -19,7 +19,6 @@ def index(request):
     return render(request, 'verify/index.j2')
 
 
-@ensure_csrf_cookie
 def generate(request):
     if 'user' not in request.session:
         return JsonResponse({'success': True, 'message': '请先登录'}, status=HTTPStatus.UNAUTHORIZED)
