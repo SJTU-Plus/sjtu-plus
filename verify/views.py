@@ -4,8 +4,6 @@ from http import HTTPStatus
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, reverse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import ensure_csrf_cookie
 
 from verify.utils import attestation
 
