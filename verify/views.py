@@ -12,7 +12,6 @@ from verify.utils import attestation
 qq_pattern = re.compile(r'[1-9]\d{4,}')
 
 
-@ensure_csrf_cookie
 def index(request):
     if 'user' not in request.session:
         return redirect(reverse('login'))
@@ -34,7 +33,6 @@ def generate(request):
         return JsonResponse({'success': False, 'message': '填写错误，请输入正确的QQ号'}, status=HTTPStatus.BAD_REQUEST)
 
 
-@csrf_exempt
 def verify(request):
     payload = json.loads(request.body)
 
