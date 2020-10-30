@@ -40,7 +40,7 @@ def generate(request):
 
 @csrf_exempt
 def verify(request):
-    api_key = request.headers.get('api-key', '')
+    api_key = request.headers.get('Api-Key', '')
     try:
         ApiKey.objects.get(key=api_key, is_enabled=True)
     except ApiKey.DoesNotExist:
@@ -74,10 +74,16 @@ def verify(request):
             })
         else:
             now = datetime.now()
-            return JsonResponse({
-                "success": timestamp <= now <= timestamp + timedelta(days=TOKEN_EXPIRE_TIME),
-                "message": timestamp.isoformat()
-            })
+            if timestamp <= now <= timestamp + timedelta(days=TOKEN_EXPIRE_TIME):
+                return JsonResponse({
+                    "success": True,
+                    "message": timestamp.isoformat()
+                })
+            else:
+                return JsonResponse({
+                    "success": False,
+                    "message": "Token Expired"
+                })
     except (UnicodeEncodeError, ValueError):
         return JsonResponse({
             "success": False,
