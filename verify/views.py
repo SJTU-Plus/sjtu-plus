@@ -1,15 +1,19 @@
+from datetime import datetime, timedelta
 import json
 import re
 from http import HTTPStatus
+from json.decoder import JSONDecodeError
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 
+from SJTUPlus.settings import TOKEN_EXPIRE_TIME
+from verify.models import ApiKey
 from verify.utils import attestation
 
-qq_pattern = re.compile(r'[1-9]\d{4,}')
+qq_pattern = re.compile(r'^[1-9]\d{4,}')
 
 
 @ensure_csrf_cookie
@@ -36,21 +40,29 @@ def generate(request):
 
 @csrf_exempt
 def verify(request):
-    payload = json.loads(request.body)
-
-    qq = payload.get('qq_number')
-    token = payload.get('token')
-
-    if qq is None or token is None:
+    api_key = request.headers.get('Api-Key', '')
+    try:
+        ApiKey.objects.get(key=api_key, is_enabled=True)
+    except ApiKey.DoesNotExist:
         return JsonResponse({
             "success": False,
-            "message": "Compulsory parameters lost"
+            "message": "Invalid Api-Key"
         }, status=HTTPStatus.BAD_REQUEST)
+    try:
+        payload = json.loads(request.body)
+    except JSONDecodeError:
+        return JsonResponse({
+            "success": False,
+            "message": "Invalid Request Body"
+        }, status=HTTPStatus.BAD_REQUEST)
+
+    qq = payload.get('qq_number', '')
+    token = payload.get('token', '')
 
     if not qq_pattern.fullmatch(qq):
         return JsonResponse({
             "success": False,
-            "message": "Invalid QQ number"
+            "message": "Invalid QQ Number"
         }, status=HTTPStatus.BAD_REQUEST)
 
     try:
@@ -61,10 +73,17 @@ def verify(request):
                 "message": "Verification Failed"
             })
         else:
-            return JsonResponse({
-                "success": True,
-                "message": timestamp.isoformat()
-            })
+            now = datetime.now()
+            if timestamp <= now <= timestamp + timedelta(days=TOKEN_EXPIRE_TIME):
+                return JsonResponse({
+                    "success": True,
+                    "message": timestamp.isoformat()
+                })
+            else:
+                return JsonResponse({
+                    "success": False,
+                    "message": "Token Expired"
+                })
     except (UnicodeEncodeError, ValueError):
         return JsonResponse({
             "success": False,
