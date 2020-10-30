@@ -75,7 +75,7 @@ def verify(request):
         else:
             now = datetime.now()
             return JsonResponse({
-                "success": timestamp <= now <= now + timedelta(days=TOKEN_EXPIRE_TIME),
+                "success": timestamp <= now <= timestamp + timedelta(days=TOKEN_EXPIRE_TIME),
                 "message": timestamp.isoformat()
             })
     except (UnicodeEncodeError, ValueError):
