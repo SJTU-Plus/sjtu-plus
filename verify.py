@@ -12,6 +12,6 @@ api_key = sys.argv[3]
 print(qq, token, api_key)
 
 resp = requests.post("https://plus.sjtu.edu.cn/attest/verify",
-        json={ 'qq_number' : qq, 'token': token }, headers={ 'Api-Key': api_key })
+                     json={'qq_number': qq, 'token': token}, headers={'Api-Key': api_key})
 
 print(resp.json())
