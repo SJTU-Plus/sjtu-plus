@@ -3,6 +3,8 @@
 import requests
 import sys
 
+# Usage: ./verify <QQ> <token> <API key>
+
 qq = sys.argv[1]
 token = sys.argv[2]
 api_key = sys.argv[3]
