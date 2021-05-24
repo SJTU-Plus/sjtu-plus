@@ -24,14 +24,11 @@
     <main role="main" class="flex-shrink-0">
       <nav class="navbar navbar-light mb-5">
         <div class="container">
-          <a class="navbar-brand" href="/">
-            SJTU {{ plus_square_fill(1) }}
-          </a>
+          <a class="navbar-brand" href="/"> SJTU {{ plus_square_fill(1) }} </a>
           <span class="text-muted">{% block icon_title %}{% endblock %}</span>
         </div>
       </nav>
-      {% include '_includes/header.j2' %}
-      {% block content %}{% endblock %}
+      {% include '_includes/header.j2' %} {% block content %}{% endblock %}
     </main>
     {% include '_includes/footer.j2' %}
     <script

@@ -5,60 +5,141 @@
     <stop offset="100%" stop-color="#514A9D" />
   </linearGradient>
 </defs>
-{% endmacro %}
-
-{% macro shield_plus(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-shield-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro shield_plus(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-shield-plus"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M5.443 1.991a60.17 60.17 0 0 0-2.725.802.454.454 0 0 0-.315.366C1.87 7.056 3.1 9.9 4.567 11.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0 0 8 14.5c.007-.001.038-.005.097-.023.072-.022.166-.058.282-.111.23-.106.525-.272.857-.5a10.197 10.197 0 0 0 2.197-2.093C12.9 9.9 14.13 7.056 13.597 3.159a.454.454 0 0 0-.315-.366c-.626-.2-1.682-.526-2.725-.802C9.491 1.71 8.51 1.5 8 1.5c-.51 0-1.49.21-2.557.491zm-.256-.966C6.23.749 7.337.5 8 .5c.662 0 1.77.249 2.813.525a61.09 61.09 0 0 1 2.772.815c.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.191 11.191 0 0 1-2.418 2.3 6.942 6.942 0 0 1-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 0 1-1.007-.586 11.192 11.192 0 0 1-2.417-2.3C2.167 10.331.839 7.221 1.412 3.024A1.454 1.454 0 0 1 2.415 1.84a61.11 61.11 0 0 1 2.772-.815z"/>
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M5.443 1.991a60.17 60.17 0 0 0-2.725.802.454.454 0 0 0-.315.366C1.87 7.056 3.1 9.9 4.567 11.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0 0 8 14.5c.007-.001.038-.005.097-.023.072-.022.166-.058.282-.111.23-.106.525-.272.857-.5a10.197 10.197 0 0 0 2.197-2.093C12.9 9.9 14.13 7.056 13.597 3.159a.454.454 0 0 0-.315-.366c-.626-.2-1.682-.526-2.725-.802C9.491 1.71 8.51 1.5 8 1.5c-.51 0-1.49.21-2.557.491zm-.256-.966C6.23.749 7.337.5 8 .5c.662 0 1.77.249 2.813.525a61.09 61.09 0 0 1 2.772.815c.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.191 11.191 0 0 1-2.418 2.3 6.942 6.942 0 0 1-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 0 1-1.007-.586 11.192 11.192 0 0 1-2.417-2.3C2.167 10.331.839 7.221 1.412 3.024A1.454 1.454 0 0 1 2.415 1.84a61.11 61.11 0 0 1 2.772-.815z"
+  />
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro calendar_plus(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-calendar-plus {{ class }}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro calendar_plus(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-calendar-plus {{ class }}"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+  />
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro chat_left_text(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro chat_left_text(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-chat-left-text"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-  <path fill-rule="evenodd" fill="url(#gradient)" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+  />
+  <path
+    fill-rule="evenodd"
+    fill="url(#gradient)"
+    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro link(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-link {{ class }}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro link(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-link {{ class }}"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill="url(#gradient)" d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
-  <path fill="url(#gradient)" d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+  <path
+    fill="url(#gradient)"
+    d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"
+  />
+  <path
+    fill="url(#gradient)"
+    d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro plus_square_fill(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" style="vertical-align: top" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro plus_square_fill(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  style="vertical-align: top"
+  viewBox="0 0 16 16"
+  class="bi bi-plus-square-fill"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill="url(#gradient)" fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+  <path
+    fill="url(#gradient)"
+    fill-rule="evenodd"
+    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro bar_chart(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-bar-chart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro bar_chart(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-bar-chart"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill="url(#gradient)" fill-rule="evenodd" d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5h-2v12h2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+  <path
+    fill="url(#gradient)"
+    fill-rule="evenodd"
+    d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5h-2v12h2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"
+  />
 </svg>
-{% endmacro %}
-
-{% macro bar_chart_steps(size) %}
-<svg width="{{ size }}rem" height="{{ size }}rem" viewBox="0 0 16 16" class="bi bi-bar-chart-steps" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+{% endmacro %} {% macro bar_chart_steps(size) %}
+<svg
+  width="{{ size }}rem"
+  height="{{ size }}rem"
+  viewBox="0 0 16 16"
+  class="bi bi-bar-chart-steps"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
   {{ gradient_def() }}
-  <path fill="url(#gradient)" fill-rule="evenodd" d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0z"/>
-  <rect fill="url(#gradient)" width="5" height="2" x="2" y="1" rx=".5"/>
-  <rect fill="url(#gradient)" width="8" height="2" x="4" y="5" rx=".5"/>
-  <path fill="url(#gradient)" d="M6 9.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+  <path
+    fill="url(#gradient)"
+    fill-rule="evenodd"
+    d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0z"
+  />
+  <rect fill="url(#gradient)" width="5" height="2" x="2" y="1" rx=".5" />
+  <rect fill="url(#gradient)" width="8" height="2" x="4" y="5" rx=".5" />
+  <path
+    fill="url(#gradient)"
+    d="M6 9.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"
+  />
 </svg>
 {% endmacro %}

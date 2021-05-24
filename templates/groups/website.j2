@@ -1,13 +1,10 @@
-{% extends "_layouts/default.j2" %}
-{% from '_includes/categories.j2' import category_first_level %}
-{% from '_includes/svg.j2' import link %}
-
-{% block icon_title %} {{ link(1)}} Link+{% endblock %}
-{% block title %}{{ root.name }}{% endblock %}
-{% block content %}
+{% extends "_layouts/default.j2" %} {% from '_includes/categories.j2' import
+category_first_level %} {% from '_includes/svg.j2' import link %} {% block
+icon_title %} {{ link(1)}} Link+{% endblock %} {% block title %}{{ root.name
+}}{% endblock %} {% block content %}
 <div class="py-5">
-    <div class="container">
-      <div class="accordion">{{ category_first_level(root) }}</div>
-    </div>
+  <div class="container">
+    <div class="accordion">{{ category_first_level(root) }}</div>
   </div>
+</div>
 {% endblock %}

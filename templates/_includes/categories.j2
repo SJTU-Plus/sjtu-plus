@@ -1,37 +1,34 @@
 {% macro gen_group(group) %}
 <div class="card h-100 mb-4 shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">{{ group.name }}</h5>
-      <p class="card-text">
-        {% if group.number %} {{ group.number }} {%
-        else %} 暂无群号 {% endif %}
-      </p>
-    </div>
-    <div class="card-footer">
-      <div class="d-flex justify-content-between align-items-center">
-        <small class="text-muted">
-          {% if group.bot_enabled %} 本群启用了
-          <!--  -->
-          <a href="/verify">机器人自助验证</a>
-          <!--  -->
-          {% endif %} {% if not group.vacancy %}本群已满{% endif %}
-        </small>
-  
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-sm btn-outline-secondary"
-            onclick="return copy(this, {{ group.number }})"
-          >
-            复制
-          </button>
-        </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ group.name }}</h5>
+    <p class="card-text">
+      {% if group.number %} {{ group.number }} {% else %} 暂无群号 {% endif %}
+    </p>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between align-items-center">
+      <small class="text-muted">
+        {% if group.bot_enabled %} 本群启用了
+        <!--  -->
+        <a href="/verify">机器人自助验证</a>
+        <!--  -->
+        {% endif %} {% if not group.vacancy %}本群已满{% endif %}
+      </small>
+
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary"
+          onclick="return copy(this, {{ group.number }})"
+        >
+          复制
+        </button>
       </div>
     </div>
   </div>
-{% endmacro %}
-
-{% macro gen_website(website) %}
+</div>
+{% endmacro %} {% macro gen_website(website) %}
 <div class="card h-100 shadow-sm">
   <div class="card-body">
     <h5 class="card-title">{{ website.name }}</h5>
@@ -45,58 +42,42 @@
       <small class="text-muted"> {{ website.url }} </small>
 
       <div class="btn-group">
-        <a
-          class="btn btn-sm btn-outline-secondary"
-          href="{{ website.url }}"
-        >
+        <a class="btn btn-sm btn-outline-secondary" href="{{ website.url }}">
           访问
         </a>
       </div>
     </div>
   </div>
 </div>
-{% endmacro %}
-
-{% macro category_first_level(category) %}
+{% endmacro %} {% macro category_first_level(category) %}
 <div class="row row-cols-1 row-cols-md-3">
-    {% if category.groups %}
-        {% for group in category.groups %}
-            {% if group.number %}
-            <div class="col mb-4">{{ gen_group(group) }}</div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    {% if category.websites %}
-        {% for website in category.websites %}
-            <div class="col mb-4">{{ gen_website(website) }}</div>
-        {% endfor %}
-    {% endif %}
-  </div>
-  
-  {% if category.subcategories %}
-    <div class="accordion">
-        {% for subcategory in category.subcategories %}
-            {{ gen_category(subcategory) }}
-        {% endfor %}
-    </div>
-  {% endif %}
-{% endmacro %}
+  {% if category.groups %} {% for group in category.groups %} {% if group.number
+  %}
+  <div class="col mb-4">{{ gen_group(group) }}</div>
+  {% endif %} {% endfor %} {% endif %} {% if category.websites %} {% for website
+  in category.websites %}
+  <div class="col mb-4">{{ gen_website(website) }}</div>
+  {% endfor %} {% endif %}
+</div>
 
-{% macro gen_category(category) %}
+{% if category.subcategories %}
+<div class="accordion">
+  {% for subcategory in category.subcategories %} {{ gen_category(subcategory)
+  }} {% endfor %}
+</div>
+{% endif %} {% endmacro %} {% macro gen_category(category) %}
 <div class="card">
-    <div class="card-header p-3">
-      <span class="text-secondary">
-        <a
-          class="text-muted"
-          name="category-{{ category.id }}"
-          href="#category-{{ category.id }}"
-          >{{ category.name }}</a
-        >
-      </span>
-    </div>
-  
-    <div class="card-body">
-      {{ category_first_level(category) }}
-    </div>
+  <div class="card-header p-3">
+    <span class="text-secondary">
+      <a
+        class="text-muted"
+        name="category-{{ category.id }}"
+        href="#category-{{ category.id }}"
+        >{{ category.name }}</a
+      >
+    </span>
+  </div>
+
+  <div class="card-body">{{ category_first_level(category) }}</div>
 </div>
 {% endmacro %}
