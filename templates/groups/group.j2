@@ -1,44 +1,44 @@
-{% extends "_layouts/default.j2" %}
-{% from '_includes/categories.j2' import category_first_level %}
-{% from '_includes/svg.j2' import chat_left_text %}
-
-{% block icon_title %} {{ chat_left_text(1)}} Group+{% endblock %}
-{% block title %}{{ root.name }}{% endblock %}
-
-{% set navs = [("学科交流群", 15), ("新生群", 5)] %}
-
-{% block content %}
+{% extends "_layouts/default.j2" %} {% from '_includes/categories.j2' import
+category_first_level %} {% from '_includes/svg.j2' import chat_left_text %} {%
+block icon_title %} {{ chat_left_text(1)}} Group+{% endblock %} {% block title
+%}{{ root.name }}{% endblock %} {% set navs = [("学科交流群", 15), ("新生群",
+5)] %} {% block content %}
 <div class="py-5">
-    <div class="container d-flex flex-column align-items-center">
-      <div class="col-md-8">
-        <ul class="nav nav-pills nav-justified mb-5">
-          {% for (name, id) in navs %}
-            <li class="nav-item">
-              <a class="nav-link{{ ' active' if root.id == id else '' }}" href="{{ url('index', kwargs={'root': id} ) }}">{{ name }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <div class="row">
-          <div class="col-12">
-            <div class="alert alert-warning" role="alert">
-              SJTU-Plus 团队对于以下 QQ 群的群成员组成、聊天内容不作保证。
-              在群聊中，请保护好个人隐私，不要轻易相信陌生人，谨防上当受骗。
-            </div>
+  <div class="container d-flex flex-column align-items-center">
+    <div class="col-md-8">
+      <ul class="nav nav-pills nav-justified mb-5">
+        {% for (name, id) in navs %}
+        <li class="nav-item">
+          <a
+            class="nav-link{{ ' active' if root.id == id else '' }}"
+            href="{{ url('index', kwargs={'root': id} ) }}"
+            >{{ name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-warning" role="alert">
+            SJTU-Plus 团队对于以下 QQ 群的群成员组成、聊天内容不作保证。
+            在群聊中，请保护好个人隐私，不要轻易相信陌生人，谨防上当受骗。
           </div>
-          {% if root.id == 15 %}
-            <div class="col-12">
-              <div class="alert alert-info" role="alert">
-                本页面中的学科交流群均由 SJTU 学生运营。
-              </div>
-            </div>
-          {% endif %}
         </div>
+        {% if root.id == 15 %}
+        <div class="col-12">
+          <div class="alert alert-info" role="alert">
+            本页面中的学科交流群均由 SJTU 学生运营。
+          </div>
+        </div>
+        {% endif %}
       </div>
-      <div class="accordion">{{ category_first_level(root) }}</div>
-      <p class="text-center mt-3">
-        如果你希望将自己维护的 QQ 群加入本清单，请联系 @迟先生、@杜大佬、@小笼包
-        或者 @人参果
-      </p>
     </div>
+    <div class="accordion">{{ category_first_level(root) }}</div>
+    <p class="text-center mt-3">
+      如果你希望将自己维护的 QQ 群加入本清单，请邮件联系
+      <a href="mailto:sjtu-plus@googlegroups.com">sjtu-plus@googlegroups.com</a
+      >。
+    </p>
   </div>
+</div>
 {% endblock %}

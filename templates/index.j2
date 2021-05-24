@@ -1,15 +1,14 @@
-{% extends "_layouts/default.j2" %}
-{% from '_includes/link_card.j2' import link_card %}
-{% from '_includes/svg.j2' import shield_plus, calendar_plus, chat_left_text, link, bar_chart, bar_chart_steps %}
-
-{% block title %}首页{% endblock %}
-{% block content %}
+{% extends "_layouts/default.j2" %} {% from '_includes/link_card.j2' import
+link_card %} {% from '_includes/svg.j2' import shield_plus, calendar_plus,
+chat_left_text, link, bar_chart, bar_chart_steps %} {% block title %}首页{%
+endblock %} {% block content %}
 <div class="container">
-    <div class="row justify-content-center">
-        {{ link_card("Identity", "/verify/", "入群验证", shield_plus(10)) }}
-        {{ link_card("Group", "/subjects/", "QQ 群索引", chat_left_text(10)) }}
-        {{ link_card("Course", "/course-plus/", "学期开课表与虚拟排课", calendar_plus(10)) }}
-        {{ link_card("Link", "/websites/", "常用校内网站导航", link(10)) }}
-    </div>
+  <div class="row justify-content-center">
+    {{ link_card("Identity", "/verify/", "入群验证", shield_plus(10)) }} {{
+    link_card("Group", "/subjects/", "QQ 群索引", chat_left_text(10)) }} {{
+    link_card("Course", "/course-plus/", "学期开课表与虚拟排课",
+    calendar_plus(10)) }} {{ link_card("Link", "/websites/", "常用校内网站导航",
+    link(10)) }}
+  </div>
 </div>
 {% endblock %}

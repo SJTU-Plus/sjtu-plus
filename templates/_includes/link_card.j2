@@ -1,13 +1,13 @@
 {% macro link_card(name, url, desc, icon) %}
 <div class="col-md-6 col-lg-3 mb-5">
-    <a href="{{ url }}" class="text-reset text-decoration-none">
-        <div class="d-flex flex-column align-items-center">
-            {% autoescape off %}
-                <span class="text-dark">{{ icon }}</span>
-            {% endautoescape %}
-            <h3 class="mt-4">{{ name }}<sup>+</sup></h3>
-            <p class="my-1 text-muted">{{ desc }}</p>
-        </div>
-    </a>
+  <a href="{{ url }}" class="text-reset text-decoration-none">
+    <div class="d-flex flex-column align-items-center">
+      {% autoescape off %}
+      <span class="text-dark">{{ icon }}</span>
+      {% endautoescape %}
+      <h3 class="mt-4">{{ name }}<sup>+</sup></h3>
+      <p class="my-1 text-muted">{{ desc }}</p>
+    </div>
+  </a>
 </div>
 {% endmacro %}

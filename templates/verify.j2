@@ -1,9 +1,6 @@
-{% extends "_layouts/default.j2" %}
-{% from '_includes/svg.j2' import shield_plus %}
-
-{% block icon_title %} {{ shield_plus(1)}} Identity+{% endblock %}
-{% block title %}加群验证服务{% endblock %}
-{% block content %}
+{% extends "_layouts/default.j2" %} {% from '_includes/svg.j2' import
+shield_plus %} {% block icon_title %} {{ shield_plus(1)}} Identity+{% endblock
+%} {% block title %}加群验证服务{% endblock %} {% block content %}
 <div class="container">
   <div class="row justify-content-center my-3">
     <div class="col-md-8 col-lg-6">
@@ -26,16 +23,15 @@
             </li>
             <li>
               技术详情可以参阅
-              <a href="https://github.com/SJTU-Plus/sjtu-plus/tree/master/docs/whitepaper.md"
+              <a
+                href="https://github.com/SJTU-Plus/sjtu-plus/tree/master/docs/whitepaper.md"
                 >SJTU-Plus 加群验证服务白皮书</a
               >。
             </li>
           </ul>
 
           <p class="card-text text-right">
-            <a class="btn btn-outline-success" href="/attest"
-              >开始验证</a
-            >
+            <a class="btn btn-outline-success" href="/attest">开始验证</a>
           </p>
         </div>
       </div>
