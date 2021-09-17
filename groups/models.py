@@ -16,7 +16,8 @@ class Category(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=255)
-    number = models.CharField(unique=True)
+    number = models.CharField(max_length=255, unique=True)
+    desc = models.CharField(max_length=1024, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     last_modified = models.DateTimeField(auto_now=True)
     bot_enabled = models.BooleanField(default=False)
