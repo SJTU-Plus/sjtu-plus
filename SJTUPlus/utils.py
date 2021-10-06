@@ -1,5 +1,5 @@
 import gzip
-from base64 import urlsafe_b64decode, urlsafe_b64encode
+from base64 import urlsafe_b64encode
 from json import dumps, loads
 
 from cryptography.fernet import Fernet

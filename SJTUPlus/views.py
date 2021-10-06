@@ -1,10 +1,9 @@
-from http import HTTPStatus
 from urllib.parse import urlencode
 
 import requests
 from authlib.jose import jwt
 from authlib.oidc.core import CodeIDToken
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, reverse
 
 from SJTUPlus.oauth import jaccount
@@ -88,7 +87,7 @@ def authorize(request):
 
 
 def logout(request):
-    http_referer = request.META.get('HTTP_REFERER','')
+    http_referer = request.META.get('HTTP_REFERER', '')
 
     app = request.GET.get('app')
     user_state = request.GET.get('state')

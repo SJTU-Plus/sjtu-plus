@@ -118,7 +118,7 @@ def user_profile(request):
         return JsonResponse({
             'error': 'not logged in'
         }, status=HTTPStatus.UNAUTHORIZED)
-    resp = jaccount.get(f'/v1/me/profile', token=token)
+    resp = jaccount.get('/v1/me/profile', token=token)
     if resp.status_code == HTTPStatus.OK:
         raw_profile = resp.json()['entities'][0]
         if 'code' not in raw_profile:  # 说明未曾对本应用赋予 essential 权限
@@ -166,7 +166,7 @@ def user_info(request):
     token = request.session.get('token')
     if token is None:
         return JsonResponse({
-            'error': f'not logged in'
+            'error': 'not logged in'
         }, status=HTTPStatus.UNAUTHORIZED)
     user = request.session.get('user')
 
