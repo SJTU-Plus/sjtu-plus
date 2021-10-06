@@ -4,8 +4,7 @@ from http import HTTPStatus
 from time import time
 
 import requests
-from django.contrib.sessions.models import Session
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.utils.encoding import escape_uri_path
 from SJTUPlus.oauth import jaccount
 from SJTUPlus.utils import jaccount_type_map
@@ -141,7 +140,7 @@ def user_profile(request):
             identitys = [
                 identity
                 for identity in raw_profile.get('identities')
-                if identity['isDefault'] == True
+                if identity['isDefault']
             ]
             default_identiy = identitys[0]
             profile.update({

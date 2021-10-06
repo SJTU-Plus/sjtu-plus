@@ -87,7 +87,7 @@ def authorize(request):
 
 
 def logout(request):
-    http_referer = request.META.get('HTTP_REFERER', '')
+    # http_referer = request.META.get('HTTP_REFERER', '')
 
     app = request.GET.get('app')
     user_state = request.GET.get('state')
@@ -125,5 +125,5 @@ def logout(request):
 
 def logged_out(request):
     state = decode_state(request.GET['state'])
-    user_state = state.get('state')
+    # user_state = state.get('state')
     return HttpResponseRedirect(state['redirect_uri'])
