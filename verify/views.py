@@ -19,13 +19,13 @@ qq_pattern = re.compile(r'^[1-9]\d{4,}')
 @ensure_csrf_cookie
 def index(request):
     if 'user' not in request.session:
-        return redirect(reverse('login'))
+        return redirect(reverse('login')+'?app=group_verify')
     return render(request, 'verify/index.j2')
 
 
 def generate(request):
     if 'user' not in request.session:
-        return JsonResponse({'success': True, 'message': '请先登录'}, status=HTTPStatus.UNAUTHORIZED)
+        return JsonResponse({'success': False, 'message': '请先登录'}, status=HTTPStatus.UNAUTHORIZED)
 
     qq = request.POST.get('qq_number', '')
     if qq_pattern.fullmatch(qq):

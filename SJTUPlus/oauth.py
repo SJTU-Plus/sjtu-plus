@@ -1,6 +1,8 @@
 from authlib.integrations.django_client import OAuth
 from SJTUPlus.settings import JACCOUNT_CLIENT_ID, JACCOUNT_CLIENT_SECRET
 
+# documentation: https://docs.authlib.org/en/latest/client/django.html
+
 oauth = OAuth()
 oauth.register(
     name='jaccount',

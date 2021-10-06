@@ -23,6 +23,8 @@ urlpatterns = [
     path('categories/', include('groups.urls')),
     path('attest/', include('verify.urls', namespace="attest")),
     path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+    path('logged_out', views.logged_out, name='logged_out'),
     path('authorize', views.authorize, name='authorize'),
     path('api/', include('api.urls')),
     path('', include('main.urls'))
