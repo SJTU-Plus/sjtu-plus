@@ -39,18 +39,20 @@ def bathroom(request):
 
 def washing_machine(request, machine_id: str):
     if not (4 < len(machine_id) < 10 and machine_id.isalnum()):
-        return JsonResponse({'error': 'invalid machine_id'}, status=HTTPStatus.BAD_REQUEST)
+        return JsonResponse({'error': 'invalid machine_id'}, status=HTTPStatus.BAD_GATEWAY)
     machine_id = machine_id.upper()
+
     try:
         result = requests.get(
             f'https://www.weimaqi.net/Index_1.aspx?device_name={machine_id}&extra=',
-            allow_redirects=False
+            allow_redirects=False,
+            timeout=5
         )
-    except:
-        return JsonResponse({'error': 'server error'}, status=HTTPStatus.BAD_REQUEST)
+    except requests.exceptions.Timeout:
+        return JsonResponse({'error': 'timeout'}, status=HTTPStatus.BAD_GATEWAY)
 
     if result.status_code != 302:
-        return JsonResponse({'error': f'bad response: code {result.status_code}'}, status=HTTPStatus.BAD_REQUEST)
+        return JsonResponse({'error': f'bad response: code {result.status_code}'}, status=HTTPStatus.BAD_GATEWAY)
 
     server_redir_url = result.headers['Location']
     if server_redir_url == f'https://www.weimaqi.net/qr1/index/index?device_name={machine_id}&extra=':
@@ -74,7 +76,7 @@ def washing_machine(request, machine_id: str):
     elif server_redir_url == f'https://www.weimaqi.net/debug/iot_transfer.ashx?device_name={machine_id}':
         return JsonResponse({'error': 'invalid machine_id', 'machine_id': machine_id}, status=HTTPStatus.BAD_REQUEST)
     else:
-        return JsonResponse({'error': f'bad response: [{server_redir_url}]'}, status=HTTPStatus.BAD_REQUEST)
+        return JsonResponse({'error': f'bad response: [{server_redir_url}]'}, status=HTTPStatus.BAD_GATEWAY)
 
 
 def lesson(request):
