@@ -35,7 +35,7 @@ def canteen_detail(request, id: int):
 
 def canteen_all(request):
     result = requests.get(
-        f'https://canteen.sjtu.edu.cn/card/ajax/placeall')
+        'https://canteen.sjtu.edu.cn/card/ajax/placeall')
     # 当数据类型不是 dict 时，需要 safe=False
     return JsonResponse(
         result.json(), safe=False,
@@ -57,7 +57,7 @@ def library(request):
 
 def cainiao(request):
     result = requests.get(
-        f'https://map.sjtu.edu.cn/realtimePersion/kuaidi')
+        'https://map.sjtu.edu.cn/realtimePersion/kuaidi')
     return JsonResponse(
         json.loads(result.content.decode('gbk')),
         content_type='application/json; charset=utf-8',
