@@ -55,6 +55,16 @@ def library(request):
     )
 
 
+def cainiao(request):
+    result = requests.get(
+        f'https://map.sjtu.edu.cn/realtimePersion/kuaidi')
+    return JsonResponse(
+        json.loads(result.content.decode('gbk')),
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
+
+
 def bathroom(request):
     result = requests.get(
         'http://wap.xt.beescrm.com/activity/WaterControl/getGroupInfo/version/1'

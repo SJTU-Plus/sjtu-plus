@@ -9,6 +9,7 @@ urlpatterns = [
     path('sjtu/canteen/all', views.canteen_all, name='canteen_all'),
     path('sjtu/canteen', views.canteen, name='canteen'),
     path('sjtu/library', views.library, name='library'),
+    path('sjtu/cainiao', views.cainiao, name='cainiao'),
     path('sjtu/bathroom', views.bathroom, name='bathroom'),
     path('sjtu/washing_machine/<str:machine_id>', views.washing_machine, name='washing_machine'),
     path('course/lesson', views.lesson, name='lesson'),

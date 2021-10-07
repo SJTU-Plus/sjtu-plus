@@ -40,9 +40,11 @@
 ### /api/sjtu/canteen
 
 返回各食堂的总座位数、总就餐人数、总剩余座位数
+
 ### /api/sjtu/canteen/all
 
 返回各食堂及其各子区域的座位数、就餐人数、剩余座位数
+
 ### /api/sjtu/canteen/[canteen_id]
 
 根据食堂的 `canteen_id` 返回该食堂各子区域的座位数、就餐人数、剩余座位数
@@ -50,6 +52,10 @@
 ### /api/sjtu/library
 
 返回各图书馆的在馆人数与限流人数
+
+### /api/sjtu/cainiao
+
+返回菜鸟驿站的实时人数与限流人数
 
 ### /api/sjtu/bathroom
 
