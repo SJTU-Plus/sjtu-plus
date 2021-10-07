@@ -6,6 +6,7 @@ import courses.views
 
 urlpatterns = [
     path('sjtu/canteen/<int:id>', views.canteen_detail, name='canteen_detail'),
+    path('sjtu/canteen/all', views.canteen_all, name='canteen_all'),
     path('sjtu/canteen', views.canteen, name='canteen'),
     path('sjtu/library', views.library, name='library'),
     path('sjtu/bathroom', views.bathroom, name='bathroom'),

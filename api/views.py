@@ -13,33 +13,62 @@ from SJTUPlus.utils import jaccount_type_map
 def canteen(request):
     result = requests.get('https://canteen.sjtu.edu.cn/CARD/Ajax/Place')
     # 当数据类型不是 dict 时，需要 safe=False
-    return JsonResponse(result.json(), safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        result.json(), safe=False,
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
 
 
-def canteen_detail(request, id):
+def canteen_detail(request, id: int):
+    if not (0 < id < 100000):
+        return JsonResponse({'error': 'invalid id'}, status=HTTPStatus.BAD_REQUEST)
     result = requests.get(
         f'https://canteen.sjtu.edu.cn/CARD/Ajax/PlaceDetails/{id}')
     # 当数据类型不是 dict 时，需要 safe=False
-    return JsonResponse(result.json(), safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        result.json(), safe=False,
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
+
+
+def canteen_all(request):
+    result = requests.get(
+        f'https://canteen.sjtu.edu.cn/card/ajax/placeall')
+    # 当数据类型不是 dict 时，需要 safe=False
+    return JsonResponse(
+        result.json(), safe=False,
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
 
 
 def library(request):
     result = requests.get(
         f'http://zgrstj.lib.sjtu.edu.cn/cp?callback=CountPerson&_={time()}')
     strip = result.text[12:-2]
-    return JsonResponse(json.loads(strip), safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        json.loads(strip),
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
 
 
 def bathroom(request):
     result = requests.get(
         'http://wap.xt.beescrm.com/activity/WaterControl/getGroupInfo/version/1'
     )
-    return JsonResponse(result.json(), safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        result.json(),
+        content_type='application/json; charset=utf-8',
+        json_dumps_params={'ensure_ascii': False}
+    )
 
 
 def washing_machine(request, machine_id: str):
     if not (4 < len(machine_id) < 10 and machine_id.isalnum()):
-        return JsonResponse({'error': 'invalid machine_id'}, status=HTTPStatus.BAD_GATEWAY)
+        return JsonResponse({'error': 'invalid machine_id'}, status=HTTPStatus.BAD_REQUEST)
     machine_id = machine_id.upper()
 
     try:
@@ -98,10 +127,11 @@ def lesson(request):
         f'/v1/me/lessons/{escape_uri_path(term)}', token=token, params={'classes': False})
 
     if resp.status_code == HTTPStatus.OK:
-        return JsonResponse({
-            'entities': resp.json()['entities'],
-            'error': 'success',
-        })  # trim and rebuild response
+        return JsonResponse(
+            {'entities': resp.json()['entities'], 'error': 'success'},
+            content_type='application/json; charset=utf-8',
+            json_dumps_params={'ensure_ascii': False}
+        )  # trim and rebuild response
     else:
         if resp.json()['error'] == 'AUTHENTICATION_SCOPE_FAILED':
             return JsonResponse({
@@ -134,7 +164,6 @@ def user_profile(request):
             'code': raw_profile['code'],
             'department': raw_profile['organize']['name'],  # 学院/部门名
             'type': raw_profile['userType'],
-            # 身份名
             'type_name': jaccount_type_map.get(raw_profile['userType'], '未知')
         }
 
@@ -156,7 +185,7 @@ def user_profile(request):
         return JsonResponse({
             'error': 'success',
             'profile': profile
-        }, json_dumps_params={'ensure_ascii': False})
+        }, content_type='application/json; charset=utf-8', json_dumps_params={'ensure_ascii': False})
     else:
         return JsonResponse({
             'error': 'bad response from JAccount server'
@@ -180,4 +209,4 @@ def user_info(request):
             'type_name': jaccount_type_map.get(user['type'], '未知')  # 身份名
         },
         'error': 'success'
-    }, json_dumps_params={'ensure_ascii': False})
+    }, content_type='application/json; charset=utf-8', json_dumps_params={'ensure_ascii': False})

@@ -110,20 +110,18 @@ def logout(request):
     if user_state:
         state['state'] = user_state
 
-    return HttpResponseRedirect(
+    response = HttpResponseRedirect(
         'https://jaccount.sjtu.edu.cn/oauth2/logout?' +
         urlencode({
             'client_id': JACCOUNT_CLIENT_ID,
             'post_logout_redirect_uri': request.build_absolute_uri('/logged_out?'+urlencode({'state': encode_state(state)})),
             # 'state': '' # jAccount后台对该参数的处理疑似存在 bug，会在 state 前错误添加 ? 和 &，遂弃用
-        }),
-        headers={
-            'Set-Cookie': 'sessionid=""; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Path=/'
-        }  # 指示客户端清除 cookie 会话
+        })
     )
+    response.delete_cookie('sessionid')  # 指示客户端清除 cookie 会话
+    return response
 
 
 def logged_out(request):
     state = decode_state(request.GET['state'])
-    # user_state = state.get('state')
     return HttpResponseRedirect(state['redirect_uri'])
