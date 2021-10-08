@@ -1,6 +1,8 @@
 import gzip
+import re
 from base64 import urlsafe_b64encode
 from json import dumps, loads
+from urllib.parse import urlparse
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
@@ -30,6 +32,15 @@ def get_filtered_scope(scopes):
         if scope in scopes:
             filtered_scopes.append(scope)
     return filtered_scopes
+
+
+def get_filtered_redirecturi(redirecturi: str):
+    parsed_url = urlparse(redirecturi)
+    is_sjtu_site = re.match(r'\A(.+\.)?sjtu\.edu\.cn\Z', parsed_url.netloc)
+    if parsed_url.netloc and not is_sjtu_site:  # 仅允许跳转到校内站点
+        return parsed_url.path or '/'  # 站外变站内，这样跳转可能对恶意行为比较友好，也易于调试
+    else:
+        return redirecturi  # 允许站内任意跳转
 
 
 def encode_state(state_obj):

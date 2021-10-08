@@ -9,7 +9,7 @@ from django.shortcuts import redirect, reverse
 from SJTUPlus.oauth import jaccount
 from SJTUPlus.settings import JACCOUNT_CLIENT_ID
 
-from .utils import decode_state, encode_state, get_filtered_scope
+from .utils import decode_state, encode_state, get_filtered_scope, get_filtered_redirecturi
 
 
 def login(request):
@@ -49,6 +49,7 @@ def login(request):
         redirect_uri = request.GET['redirecturi']
 
     scope_list = get_filtered_scope(scopes)
+    redirect_uri = get_filtered_redirecturi(redirect_uri)
 
     redir_to = jaccount.authorize_redirect(
         request,
@@ -103,6 +104,8 @@ def logout(request):
     else:
         if not redirect_uri:
             redirect_uri = '/'
+
+    redirect_uri = get_filtered_redirecturi(redirect_uri)
 
     state = {
         'redirect_uri': redirect_uri
