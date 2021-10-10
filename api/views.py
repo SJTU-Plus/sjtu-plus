@@ -70,9 +70,9 @@ def cainiao(request):
         response_json['limit'] = result_json['Total']
         response_json['current'] = result_json['Current']
         response_json['error'] = 'success'
-    except JSONDecodeError: # 未返回有效的 json 字符串时
+    except JSONDecodeError:  # 未返回有效的 json 字符串时
         response_json['online'] = False
-    except KeyError: # API的字段发生更新时
+    except KeyError:  # API的字段发生更新时
         pass
     return JsonResponse(response_json)
 
