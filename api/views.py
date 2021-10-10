@@ -1,4 +1,5 @@
 import json
+from json.decoder import JSONDecodeError
 import re
 from http import HTTPStatus
 from time import time
@@ -58,11 +59,22 @@ def library(request):
 def cainiao(request):
     result = requests.get(
         'https://map.sjtu.edu.cn/realtimePersion/kuaidi')
-    return JsonResponse(
-        json.loads(result.content.decode('gbk')),
-        content_type='application/json; charset=utf-8',
-        json_dumps_params={'ensure_ascii': False}
-    )
+    response_json = {
+        'error': 'error',
+        'online': True,
+        'limit': 0,
+        'current': 0
+    }
+    try:
+        result_json = json.loads(result.content.decode('gbk'))
+        response_json['error'] = 'success'
+        response_json['limit'] = result_json['Total']
+        response_json['current'] = result_json['Current']
+    except JSONDecodeError: # 未返回有效的 json 字符串时
+        response_json['online'] = False
+    except KeyError: # API的字段发生更新时
+        pass
+    return JsonResponse(response_json)
 
 
 def bathroom(request):
