@@ -25,7 +25,7 @@ def canteen_detail(request, id: int):
     if not (0 < id < 100000):
         return JsonResponse({'error': 'invalid id'}, status=HTTPStatus.BAD_REQUEST)
     result = requests.get(
-        f'https://canteen.sjtu.edu.cn/CARD/Ajax/PlaceDetails/{id}')
+        f'https://canteen.sjtu.edu.cn/CARD/Ajax/PlaceDetails/{id}?disabled=0')
     # 当数据类型不是 dict 时，需要 safe=False
     return JsonResponse(
         result.json(), safe=False,
